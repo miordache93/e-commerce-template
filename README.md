@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# E-Commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technology Stack
+
+React, TypeScript, Redux, Redux-toolkit, Redux-Saga and many more to come
 
 ## Available Scripts
 

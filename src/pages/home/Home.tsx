@@ -1,11 +1,12 @@
 import React from 'react'
 
-function Home() {
+export const Home = () => {
+
+  console.log('home');
+  
   return (
     <div>
       Home Content
     </div>
   )
-}
-
-export default Home
+};

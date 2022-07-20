@@ -4,12 +4,26 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Register from './pages/register/Register';
-import NotFound from './pages/not-found/NotFound';
-import Home from './pages/home/Home';
-import Products from './pages/products/Products';
 
-const Login = React.lazy(() => import('./pages/login/Login'));
+// Custom Pages
+import {
+  Home,
+  Products,
+  NotFound
+} from './pages';
+
+// Custom components
+
+
+// Redux Store
+import store from './store/configureStore';
+import { Provider } from 'react-redux'
+
+// Lazy loaded pages
+const Login = React.lazy(() => import('./pages/login/Login').then(module => ({ default: module.Login })));
+const Register = React.lazy(() => import('./pages/register/Register').then(module => ({ default: module.Register })));
+const Cart = React.lazy(() => import('./pages/cart/Cart').then(module => ({ default: module.Cart })));
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -17,25 +31,38 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-        <Route
-            index
-            element={<Home />}
-          />
-          <Route path="products" element={<Products />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={
-            <React.Suspense fallback={<>Fallback component</>}>
-              <Login />
-            </React.Suspense>
-          } />
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
-        </Route>
-      </Routes>
+      <Provider store={store}>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route
+              index
+              element={<Home />}
+            />
+            <Route path="products" element={<Products />} />
+            <Route path="register" element={<Register />} />
+            {/* Lazy loaded components */}
+            <Route path="login" element={
+              <React.Suspense fallback={<>Fallback component</>}>
+                <Login />
+              </React.Suspense>
+            } />
+            <Route path="register" element={
+              <React.Suspense fallback={<>Fallback component</>}>
+                <Register />
+              </React.Suspense>
+            } />
+            <Route path="cart" element={
+              <React.Suspense fallback={<>Fallback component</>}>
+                <Cart />
+              </React.Suspense>
+            } />
+            <Route
+              path="*"
+              element={<NotFound />}
+            />
+          </Route>
+        </Routes>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
 );
