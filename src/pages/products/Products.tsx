@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector, shallowEqual } from 'react-redux';
+import { useSelector} from 'react-redux';
+import { getProduct } from '../../store/ducks/productSlice';
 import { clearProducts, getProducts } from '../../store/ducks/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { getProductsLength } from '../../store/selectors';
@@ -8,6 +9,7 @@ export const Products = () => {
   const dispatch = useAppDispatch();
   const products = useAppSelector((state: any) => state.products.items);
   const loading = useAppSelector((state: any) => state.products.loading);
+  const selectedProduct = useAppSelector((state: any) => state.product.product);
   const productsLength = useSelector(getProductsLength);
 
   useEffect(() => {
@@ -17,13 +19,19 @@ export const Products = () => {
     }
   }, [dispatch]);
 
-  console.log('productsLength', productsLength, loading);
+  console.log('selectedProduct', selectedProduct, loading);
+
+  const handleProductClick = (id: number): any => {
+    dispatch(
+      getProduct(id)
+    );
+  };
 
   return (
     <div>
       {
         products.length > 0 && products.map((p:any) => (
-          <div key={p.id}>{ p.name }</div>
+          <div onClick={() => handleProductClick(p.id)} key={p.id}>{ p.name }</div>
         )
         )
       }

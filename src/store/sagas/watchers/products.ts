@@ -1,4 +1,4 @@
-import { takeLatest, takeLeading } from "redux-saga/effects";
+import { takeLatest } from "redux-saga/effects";
 import { getProducts } from "../../ducks/productsSlice";
 import { fetchProducts } from "../handlers/products";
 

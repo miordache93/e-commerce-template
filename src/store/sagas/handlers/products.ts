@@ -1,6 +1,6 @@
 import { put, call, delay } from 'redux-saga/effects';
 import { fetchProductsApi } from '../../../api';
-import { getProducts, getProductsFailed, getProductsSuccess } from '../../ducks/productsSlice';
+import { getProductsFailed, getProductsSuccess } from '../../ducks/productsSlice';
 
 
 export function* fetchProducts(): any {
