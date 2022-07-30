@@ -1,24 +1,29 @@
 import React from 'react';
 import './App.css';
-import { Link, Outlet} from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { Header } from './common/components';
+import { ThemeProvider } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
+import { useSelector } from 'react-redux';
+import { settingsDarkModeSelector, settingsThemeTypeSelector } from './store/selectors/settings.selector';
+import { getCustomTheme } from './common/helpers/theme.helper';
 
 
 function App() {
+  const themeType = useSelector(settingsThemeTypeSelector);
+  const darkMode = useSelector(settingsDarkModeSelector);
+
+  const theme = React.useMemo(() => createTheme(getCustomTheme(darkMode, themeType)), [darkMode, themeType]);
+
   return (
     <div>
-      <h1>Bookkeeper</h1>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/">Home</Link> |{" "}
-        <Link to="/products">Products</Link>
-      </nav>
-      <Outlet />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <Outlet />
+      </ThemeProvider>
     </div>
   );
 }
 
 export default App;
+

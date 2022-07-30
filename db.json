@@ -2,11 +2,17 @@
   "products": [
     {
       "id": 0,
-      "name": "Product 1"
+      "name": "Product 1",
+      "price": 50,
+      "brand": "Brand 1",
+      "createdAt":"2023-01-20"
     },
     {
       "id": 1,
-      "name": "Product 2"
+      "name": "Product 2",
+      "price": 200,
+      "brand": "Brand 2",
+      "createdAt":"2022-01-20"
     }
   ]
 }
