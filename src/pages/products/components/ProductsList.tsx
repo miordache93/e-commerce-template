@@ -3,15 +3,20 @@ import { useSelector } from 'react-redux';
 import { getProduct } from '../../../store/ducks/productSlice';
 import { useAppDispatch } from '../../../store/hooks';
 import { getCatalog } from '../../../store/selectors/products.selector';
+import ProductItem from './ProductItem';
+import { useNavigate } from "react-router-dom";
 
 const ProductsList = () => {
   const { loading, products, error } = useSelector(getCatalog);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+
 
   const handleProductClick = (id: number): void => {
     dispatch(
       getProduct(id)
     );
+    navigate(`/products/${id}`);
   };
 
   if (error) {
@@ -19,15 +24,16 @@ const ProductsList = () => {
   }
 
   return (
-    <div className="Products">
+    <div className="ProductsList">
       {
+        loading ? <p>Loading...</p> :
         products.length > 0 && products.map((p: any) => (
-          <div onClick={() => handleProductClick(p.id)} key={p.id}>{p.name}</div>
-        )
-        )
-      }
-      {
-        loading === true && <p>Loading...</p>
+          <ProductItem
+            key={p.id}
+            product={p}
+            handleClick={handleProductClick}
+          />
+        ))
       }
     </div>
   );

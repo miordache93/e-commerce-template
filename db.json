@@ -5,14 +5,16 @@
       "name": "Product 1",
       "price": 50,
       "brand": "Brand 1",
-      "createdAt":"2023-01-20"
+      "createdAt":"2023-01-20",
+      "imageUrl": "./../../../static/images/products/cp.png"
     },
     {
       "id": 1,
       "name": "Product 2",
       "price": 200,
       "brand": "Brand 2",
-      "createdAt":"2022-01-20"
+      "createdAt":"2022-01-20",
+      "imageUrl": "./../../../static/images/products/cp.png"
     }
   ]
 }

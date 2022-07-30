@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // This slice refers to the selectedProduct
 
 const initialState = {
-  product: null,
+  product: {},
   selectedProductId: null,
   loading: false,
   error: false

@@ -1,12 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  searchText: null,
+interface IFiltersState {
+  searchText: string;
+  priceRange: {
+    min: number;
+    max: number;
+  },
+  brands: string[];
+  orderBy: string;
+}
+
+const initialState: IFiltersState = {
+  searchText: '',
   priceRange: {
     min: 0,
     max: 9999
   },
-  brands: ['Brand 1'],
+  brands: [],
   orderBy: 'date-desc',
 };
 

@@ -8,7 +8,7 @@ export const getProduct = createSelector(
   (state: RootState) => state.product.loading,
   (state: RootState) => state.product.product,
   (state: RootState) => state.product.error,
-  (loading, product, error) => ({
+  (loading, product, error): {loading: boolean, product: any, error: boolean} => ({
       loading,
       product,
       error,

@@ -18,6 +18,7 @@ import {
 // Redux Store
 import store from './store/configureStore';
 import { Provider } from 'react-redux'
+import ProductDetails from './pages/products/components/ProductDetails';
 
 // Lazy loaded pages
 const Login = React.lazy(() => import('./pages/login/Login').then(module => ({ default: module.Login })));
@@ -39,6 +40,7 @@ root.render(
               element={<Home />}
             />
             <Route path="products" element={<Products />} />
+            <Route path="products/:id" element={<ProductDetails />} />
             <Route path="register" element={<Register />} />
             {/* Lazy loaded components */}
             <Route path="login" element={

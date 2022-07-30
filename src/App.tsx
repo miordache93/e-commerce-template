@@ -16,10 +16,12 @@ function App() {
   const theme = React.useMemo(() => createTheme(getCustomTheme(darkMode, themeType)), [darkMode, themeType]);
 
   return (
-    <div>
+    <div className="App">
       <ThemeProvider theme={theme}>
         <Header />
-        <Outlet />
+        <div className="container">
+          <Outlet />
+        </div>
       </ThemeProvider>
     </div>
   );
