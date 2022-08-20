@@ -7,7 +7,7 @@ interface ISettingsState {
 };
 
 const initialState: ISettingsState = {
-  language: 'EN',
+  language: 'en',
   themeType: 'BASE', // TODO: create a default theme
   darkMode: false
 };

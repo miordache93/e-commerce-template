@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
+// Translations
+import './i18n';
+
 // Custom Pages
 import {
   Home,
@@ -13,7 +16,6 @@ import {
 } from './pages';
 
 // Custom components
-
 
 // Redux Store
 import store from './store/configureStore';
@@ -24,7 +26,7 @@ import ProductDetails from './pages/products/components/ProductDetails';
 const Login = React.lazy(() => import('./pages/login/Login').then(module => ({ default: module.Login })));
 const Register = React.lazy(() => import('./pages/register/Register').then(module => ({ default: module.Register })));
 const Cart = React.lazy(() => import('./pages/cart/Cart').then(module => ({ default: module.Cart })));
-
+const Admin = React.lazy(() => import('./pages/admin/Admin').then(module => ({ default: module.Admin })));
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -56,6 +58,11 @@ root.render(
             <Route path="cart" element={
               <React.Suspense fallback={<>Fallback component</>}>
                 <Cart />
+              </React.Suspense>
+            } />
+            <Route path="admin" element={
+              <React.Suspense fallback={<>Fallback component</>}>
+                <Admin />
               </React.Suspense>
             } />
             <Route

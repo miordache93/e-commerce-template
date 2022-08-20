@@ -4,7 +4,8 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
 import ThemeModeSwitch from './ThemeModeSwitch';
 import ThemeTypeSwitch from './ThemeTypeSwitch';
-
+import { useTranslation } from "react-i18next";
+import LanguageSwitch from './LanguageSwitch';
 
 interface Props {
   /**
@@ -20,17 +21,19 @@ const navItems = ['Home', 'Products', 'Contact'];
 export const Header = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { t, i18n } = useTranslation();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+      <Link to="/">
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
-      </Typography>
+          { t('TITLE')}
+        </Typography>
+      </Link>
       <Divider />
       <List>
         {navItems.map((item) => (
@@ -60,18 +63,20 @@ export const Header = (props: Props) => {
           >
             <MenuIcon />
           </IconButton>
+          <Link to="/" >
           <Typography
             variant="h6"
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
+          >           { t('TITLE')}
           </Typography>
+          </Link>
           <ThemeModeSwitch />
           <ThemeTypeSwitch />
+          <LanguageSwitch />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item) => (
-              <Button key={item} sx={{ color: '#fff' }} component={Link} to={`/${item}`}>
+            {navItems.map((item, index) => (
+              <Button key={item} sx={{ color: '#fff' }} component={Link} to={`/${ index === 0 ? '' : item}`}>
                 {item}
               </Button>
             ))}

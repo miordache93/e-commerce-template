@@ -19,7 +19,7 @@ export const Products = () => {
     return () => {
       dispatch(clearProducts());
     }
-  }, [dispatch]);
+  }, [dispatch, productsLength]);
 
   return (
     <>
