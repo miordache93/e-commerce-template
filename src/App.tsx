@@ -17,9 +17,9 @@ function App() {
   const darkMode = useSelector(settingsDarkModeSelector);
   const lang = useSelector(settingsLanguageSelector);
   
-  const [locale, setLocale] = React.useState<SupportedLocales>(Mui_Languages_Map[lang]);
+  const [locale] = React.useState<SupportedLocales>(Mui_Languages_Map[lang]);
 
-  const theme = React.useMemo(() => createTheme(getCustomTheme(darkMode, themeType), locales[locale]), [darkMode, themeType]);
+  const theme = React.useMemo(() => createTheme(getCustomTheme(darkMode, themeType), locales[locale]), [darkMode, themeType, locale]);
 
   return (
     <div className="App">

@@ -23,6 +23,8 @@ export const Header = (props: Props) => {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { t, i18n } = useTranslation();
 
+  console.log(i18n);
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
