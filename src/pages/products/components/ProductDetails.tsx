@@ -9,8 +9,6 @@ function ProductDetails() {
     return <p>Sorry an error occured...</p>
   }
 
-  console.log('Product', product);
-
   return (
     <div className="ProductDetails">
       {

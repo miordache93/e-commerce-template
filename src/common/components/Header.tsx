@@ -6,6 +6,7 @@ import ThemeModeSwitch from './ThemeModeSwitch';
 import ThemeTypeSwitch from './ThemeTypeSwitch';
 import { useTranslation } from "react-i18next";
 import LanguageSwitch from './LanguageSwitch';
+import { NAV_ITEMS, INavItem } from '../constants/navItems';
 
 interface Props {
   /**
@@ -16,18 +17,17 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Products', 'Contact'];
+// const navItems = ['Home', 'Products', 'Contact'];
 
 export const Header = (props: Props) => {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { t, i18n } = useTranslation();
 
-  console.log(i18n);
-
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
@@ -38,10 +38,10 @@ export const Header = (props: Props) => {
       </Link>
       <Divider />
       <List>
-        {navItems.map((item) => (
-          <ListItem color="primary" key={item} disablePadding>
+        {NAV_ITEMS.map((item) => (
+          <ListItem color="primary" key={`${item.name}-${item.id}`} disablePadding>
             <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
+              <ListItemText primary={t(item.name)} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -77,9 +77,14 @@ export const Header = (props: Props) => {
           <ThemeTypeSwitch />
           <LanguageSwitch />
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {navItems.map((item, index) => (
-              <Button key={item} sx={{ color: '#fff' }} component={Link} to={`/${ index === 0 ? '' : item}`}>
-                {item}
+            {NAV_ITEMS.map((item: INavItem, index: number) => (
+              <Button 
+                key={`${item.name}-${index}`} 
+                sx={{ color: '#fff' }} 
+                component={Link} to={`${item.path}`}>
+                {
+                t(item.name)
+                }
               </Button>
             ))}
           </Box>
