@@ -1,4 +1,4 @@
-# E-Commerce Platform
+# MesterIt Platform
 
 ## Technology Stack
 
