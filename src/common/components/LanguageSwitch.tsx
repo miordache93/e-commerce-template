@@ -10,7 +10,7 @@ import { LANGUAGES } from '../constants/languages';
 const LanguageSwitch = () => {
   const dispatch = useAppDispatch();
   const lang = useSelector(settingsLanguageSelector);
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const handleThemeChange = (event: any): void => {
     const {
