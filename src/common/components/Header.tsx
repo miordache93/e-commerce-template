@@ -7,33 +7,35 @@ import ThemeTypeSwitch from './ThemeTypeSwitch';
 import { useTranslation } from "react-i18next";
 import LanguageSwitch from './LanguageSwitch';
 import { NAV_ITEMS, INavItem } from '../constants/navItems';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../store/hooks';
+import { toogleSideBar } from '../../store/ducks/settingsSlice';
+import { settingsSideBarOpenedSelector } from '../../store/selectors/settings.selector';
 
 interface Props {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window?: () => Window;
 }
 
 const drawerWidth = 240;
-// const navItems = ['Home', 'Products', 'Contact'];
+const navItems = ['Home', 'Products', 'Contact'];
 
 export const Header = (props: Props) => {
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
   const { t, i18n } = useTranslation();
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
+  const dispatch = useAppDispatch();
+  const sideBarOpened = useSelector(settingsSideBarOpenedSelector);
+
+  const toggleSideBar = () => {
+    dispatch(toogleSideBar());
   };
 
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box onClick={() => toggleSideBar()} sx={{ textAlign: 'center' }}>
       <Link to="/">
-      <Typography variant="h6" sx={{ my: 2 }}>
-          { t('TITLE')}
+        <Typography variant="h6" sx={{ my: 2 }}>
+          {t('TITLE')}
         </Typography>
       </Link>
       <Divider />
@@ -54,64 +56,59 @@ export const Header = (props: Props) => {
   return (
     <div>
       <Box sx={{ display: 'flex' }}>
-      <AppBar component="nav">
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
+        <AppBar component="nav">
+          <Toolbar>
+            {/* <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={() => toggleSideBar()}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton> */}
+            <Link to="/" >
+              <Typography
+                variant="h6"
+                component="div"
+                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
+              >           {t('TITLE')}
+              </Typography>
+            </Link>
+            <ThemeModeSwitch />
+            <ThemeTypeSwitch />
+            <LanguageSwitch />
+            <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+              {navItems.map((item, index) => (
+                <Button key={item} sx={{ color: '#fff' }} component={Link} to={`/${index === 0 ? '' : item}`}>
+                  {item}
+                </Button>
+              ))}
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Box component="nav">
+          <Drawer
+            color="primary"
+            container={container}
+            variant="temporary"
+            open={sideBarOpened}
+            onClose={() => toggleSideBar()}
+            ModalProps={{
+              keepMounted: true
+            }}
+            sx={{
+              display: { xs: 'block', md: 'none' },
+              '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            }}
           >
-            <MenuIcon />
-          </IconButton>
-          <Link to="/" >
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-          >           { t('TITLE')}
-          </Typography>
-          </Link>
-          <ThemeModeSwitch />
-          <ThemeTypeSwitch />
-          <LanguageSwitch />
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            {NAV_ITEMS.map((item: INavItem, index: number) => (
-              <Button 
-                key={`${item.name}-${index}`} 
-                sx={{ color: '#fff' }} 
-                component={Link} to={`${item.path}`}>
-                {
-                t(item.name)
-                }
-              </Button>
-            ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
-      <Box component="nav">
-        <Drawer
-          color="primary"
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: 'block', sm: 'none' },
-            '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-          }}
-        >
-          {drawer}
-        </Drawer>
+            {drawer}
+          </Drawer>
+        </Box>
+        <Box component="main" sx={{ p: 3 }}>
+          <Toolbar />
+        </Box>
       </Box>
-      <Box component="main" sx={{ p: 3 }}>
-        <Toolbar />
-      </Box>
-    </Box>
     </div>
   )
 };

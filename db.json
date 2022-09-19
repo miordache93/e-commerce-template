@@ -2,6 +2,7 @@
   "products": [
     {
       "id": 0,
+<<<<<<< Updated upstream
       "name": "Product 1",
       "price": 50,
       "brand": "Brand 1",
@@ -15,6 +16,13 @@
       "brand": "Brand 2",
       "createdAt":"2022-01-20",
       "imageUrl": "./../../../static/images/products/cp.png"
+=======
+      "name": "Product 1"
+    },
+    {
+      "id": 1,
+      "name": "Product 2"
+>>>>>>> Stashed changes
     }
   ]
 }
