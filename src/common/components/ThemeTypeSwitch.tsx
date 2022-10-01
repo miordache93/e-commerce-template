@@ -5,6 +5,7 @@ import { setThemeType, togglePopupOpened } from '../../store/ducks/settingsSlice
 import { useAppDispatch } from '../../store/hooks';
 import { settingsThemeTypeSelector } from '../../store/selectors/settings.selector';
 import { THEME_TYPES } from '../constants/themes';
+import { CustomPaletteBuilder } from './CustomPaletteBuilder';
 
 
 const ThemeTypeSwitch = () => {
@@ -34,6 +35,10 @@ const ThemeTypeSwitch = () => {
           <MenuItem color="secondary" value={THEME_TYPES.BASE}>Base</MenuItem>
           <MenuItem value={THEME_TYPES.GAMBITS}>Gambits</MenuItem>
           <MenuItem value={THEME_TYPES.WILD}>Wild</MenuItem>
+          <MenuItem value={THEME_TYPES.CUSTOM}>Custom</MenuItem>
+          {
+            themeType === THEME_TYPES.CUSTOM && <CustomPaletteBuilder />
+          }
         </Select>
       </FormControl>
     </div>

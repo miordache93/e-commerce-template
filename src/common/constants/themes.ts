@@ -1,13 +1,20 @@
-import { baseTheme, gambitsTheme, wildTheme } from "../settings/themes";
+import { baseTheme, gambitsTheme, wildTheme, CustomTheme } from "../settings/themes";
 
 export const THEME_TYPES = {
   GAMBITS: 'GAMBITS',
   WILD: 'WILD',
-  BASE: 'BASE'
+  BASE: 'BASE',
+  CUSTOM: 'CUSTOM',
 };
+
+export const THEME_MODES = {
+  DARK: 'dark',
+  LIGHT: 'light',
+}
 
 export const themesMap: { [key: string ]: any } = {
   GAMBITS: gambitsTheme,
   WILD: wildTheme,
-  BASE: baseTheme
+  BASE: baseTheme,
+  CUSTOM: CustomTheme
 };
