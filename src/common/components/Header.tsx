@@ -1,6 +1,6 @@
 import { AppBar, Box, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from "react-i18next";
 import { NAV_ITEMS } from '../constants/navItems';
 import { useSelector } from 'react-redux';
@@ -19,6 +19,7 @@ export const Header = (props: Props) => {
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const sideBarOpened = useSelector(settingsSideBarOpenedSelector);
 
   const toggleSideBar = () => {
@@ -37,7 +38,7 @@ export const Header = (props: Props) => {
       <List>
         {NAV_ITEMS.map((item) => (
           <ListItem color="primary" key={`${item.name}-${item.id}`} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton sx={{ textAlign: 'center' }} onClick={() => navigate(item.path)}>
               <ListItemText primary={t(item.name)} />
             </ListItemButton>
           </ListItem>
