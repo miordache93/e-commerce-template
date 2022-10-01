@@ -25,11 +25,11 @@ export const Categories = () => {
                         <Masonry columns={3} spacing={2}>
                             {categories.map((item, index) => (
                                 <div key={index}>
-                                    <Label>{item}</Label>
+                                    {/* <Label>{item}</Label> */}
+                                    <h2>{ item } </h2>
                                     <img
-                                        src={`./../../../../static/images/categories/${item.img}?w=162&auto=format`}
-                                        // srcSet={`${item.img}?w=162&auto=format&dpr=2 2x`}
-                                        alt={item.name}
+                                        src={`${process.env.PUBLIC_URL}/static/images/categories/${item}.png?w=162&auto=format`}
+                                        alt={item}
                                         loading="lazy"
                                         style={{
                                             borderBottomLeftRadius: 4,

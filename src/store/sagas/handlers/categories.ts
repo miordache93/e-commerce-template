@@ -6,7 +6,7 @@ import { getCategoriesFailed, getCategoriesSuccess } from '../../ducks/categorie
 export function* fetchCategories(): any {
   try {
       const { data }  = yield call(fetchAllCategories);
-      yield put(getCategoriesSuccess(data));
+      yield put(getCategoriesSuccess([...data, ...data, ...data, ...data]));
   } catch (error: any) {
       yield put(getCategoriesFailed(error));
   }
