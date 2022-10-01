@@ -40,7 +40,7 @@ export const baseTheme = (mode: PaletteMode): ThemeOptions => ({
     MuiPaper: {
       styleOverrides: {
         root: {
-          background: "#393e46"
+          // background: "#393e46"
         }
       },
       defaultProps: {

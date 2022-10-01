@@ -1,12 +1,8 @@
-import { AppBar, Box, Button, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, Divider, Drawer, List, ListItem, ListItemButton, ListItemText, Toolbar, Typography } from '@mui/material';
 import React from 'react'
-import MenuIcon from '@mui/icons-material/Menu';
 import { Link } from 'react-router-dom';
-import ThemeModeSwitch from './ThemeModeSwitch';
-import ThemeTypeSwitch from './ThemeTypeSwitch';
 import { useTranslation } from "react-i18next";
-import LanguageSwitch from './LanguageSwitch';
-import { NAV_ITEMS, INavItem } from '../constants/navItems';
+import { NAV_ITEMS } from '../constants/navItems';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../store/hooks';
 import { toogleSideBar } from '../../store/ducks/settingsSlice';
@@ -17,11 +13,10 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Home', 'Products', 'Contact'];
 
 export const Header = (props: Props) => {
   const { window } = props;
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
   const sideBarOpened = useSelector(settingsSideBarOpenedSelector);
@@ -58,15 +53,6 @@ export const Header = (props: Props) => {
       <Box sx={{ display: 'flex' }}>
         <AppBar component="nav">
           <Toolbar>
-            {/* <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              edge="start"
-              onClick={() => toggleSideBar()}
-              sx={{ mr: 2, display: { sm: 'none' } }}
-            >
-              <MenuIcon />
-            </IconButton> */}
             <Link to="/" >
               <Typography
                 variant="h6"
@@ -75,13 +61,10 @@ export const Header = (props: Props) => {
               >           {t('TITLE')}
               </Typography>
             </Link>
-            <ThemeModeSwitch />
-            <ThemeTypeSwitch />
-            <LanguageSwitch />
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-              {navItems.map((item, index) => (
-                <Button key={item} sx={{ color: '#fff' }} component={Link} to={`/${index === 0 ? '' : item}`}>
-                  {item}
+              {NAV_ITEMS.map((item, index) => (
+                <Button key={`${item.name}-${index}`} sx={{ color: '#fff' }} component={Link} to={item.path}>
+                  {t(item.name)}
                 </Button>
               ))}
             </Box>

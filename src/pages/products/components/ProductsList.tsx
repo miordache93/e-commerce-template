@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../store/hooks';
 import { getCatalog } from '../../../store/selectors/products.selector';
 import ProductItem from './ProductItem';
 import { useNavigate } from "react-router-dom";
+import './ProductsList.scss';
 
 const ProductsList = () => {
   const { loading, products, error } = useSelector(getCatalog);

@@ -26,26 +26,6 @@ const palletes: { [key: string]: IPalette } = {
 
 export const gambitsTheme = (mode: PaletteMode): ThemeOptions => ({
   ...palletes[mode],
-  components: {
-    MuiButton: {
-      defaultProps: {
-        disableRipple: true,
-        size: "small",
-        sx: {
-          color: "#393e46"
-        }
-      }
-    },
-    MuiPaper: {
-      defaultProps: {
-        elevation: 10
-      },
-      styleOverrides: {
-        root: {
-          background: "#222831"
-        }
-      }
-    }
-  }
+  components: {}
 });
 

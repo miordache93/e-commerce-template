@@ -1,7 +1,7 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { setThemeType } from '../../store/ducks/settingsSlice';
+import { setThemeType, togglePopupOpened } from '../../store/ducks/settingsSlice';
 import { useAppDispatch } from '../../store/hooks';
 import { settingsThemeTypeSelector } from '../../store/selectors/settings.selector';
 import { THEME_TYPES } from '../constants/themes';
@@ -16,6 +16,7 @@ const ThemeTypeSwitch = () => {
       target: { value },
     } = event;
     dispatch(setThemeType(value));
+    dispatch(togglePopupOpened());
   };
 
   return (

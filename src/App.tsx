@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Outlet } from 'react-router-dom';
-import { Header, MobileHeader } from './common/components';
+import { Header, MobileHeader, Settings } from './common/components';
 import { ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import { useSelector } from 'react-redux';
@@ -28,6 +28,7 @@ function App() {
         <div className="container">
           <Outlet />
         </div>
+        <Settings />
         <MobileHeader />
       </ThemeProvider>
     </div>

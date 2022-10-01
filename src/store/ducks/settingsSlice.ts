@@ -5,13 +5,15 @@ interface ISettingsState {
   themeType: string;
   darkMode: boolean;
   sideBarOpened: boolean;
+  poupOpened: boolean;
 };
 
 const initialState: ISettingsState = {
   language: 'en',
-  themeType: 'BASE', // TODO: create a default theme
+  themeType: 'BASE',
   darkMode: false,
-  sideBarOpened: false
+  sideBarOpened: false,
+  poupOpened: false
 };
 
 // Redux Toolkit slice for app settings
@@ -23,6 +25,12 @@ export const settingsSlice = createSlice({
       return {
         ...state,
         darkMode: !state.darkMode
+      }
+    },
+    togglePopupOpened: (state): any => {
+      return {
+        ...state,
+        poupOpened: !state.poupOpened
       }
     },
     setThemeType: (state, action): any => {
@@ -46,6 +54,6 @@ export const settingsSlice = createSlice({
   }
 });
 
-export const { toggleDarkMode, setThemeType, setLanguage, toogleSideBar } = settingsSlice.actions;
+export const { toggleDarkMode, setThemeType, setLanguage, toogleSideBar, togglePopupOpened } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

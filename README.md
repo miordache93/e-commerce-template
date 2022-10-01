@@ -1,4 +1,4 @@
-# MesterIt Platform
+# E-Commerce Template
 
 ## Technology Stack
 
