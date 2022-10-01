@@ -6,7 +6,7 @@ interface IFiltersState {
     min: number;
     max: number;
   },
-  brands: string[];
+  categories: string[];
   orderBy: string;
 }
 
@@ -16,7 +16,7 @@ const initialState: IFiltersState = {
     min: 0,
     max: 9999
   },
-  brands: [],
+  categories: [],
   orderBy: 'date-desc',
 };
 
@@ -25,10 +25,10 @@ export const filtersSlice = createSlice({
   name: 'filters',
   initialState,
   reducers: {
-    setBrandFilter: (state, action): any => {
+    setCategoryFilter: (state, action): any => {
       return {
         ...state,
-        brands: [...state.brands, ...action.payload],
+        categories: [...state.categories, ...action.payload],
       };
     },
     setPriceFilter: (state, action): any => {
@@ -53,6 +53,6 @@ export const filtersSlice = createSlice({
   },
 });
 
-export const { setBrandFilter, setPriceFilter, setOrderBy, clearAllFilters } = filtersSlice.actions;
+export const { setCategoryFilter, setPriceFilter, setOrderBy, clearAllFilters } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

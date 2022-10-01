@@ -1,15 +1,13 @@
-import { Button } from '@mui/material';
 import React from 'react'
+import { Categories } from './components/Categories';
 
 import './Home.scss';
 
 export const Home = () => {
 
   return (
-    <div className="home-component">
-      <Button variant="text">Text</Button>
-      <Button variant="contained">Contained</Button>
-      <Button variant="outlined">Outlined</Button>
+    <div className="Home">
+        <Categories />
     </div>
   )
 };

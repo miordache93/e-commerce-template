@@ -1,7 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 import { Product } from "../../common/models/Product";
 import { RootState } from "../rootReducer";
-import { catalogFilterByBrandSelector, catalogFilterByPriceSelector, catalogOrderBySelector } from "./filters.selector";
+import { catalogFilterByCategorySelector, catalogFilterByPriceSelector, catalogOrderBySelector } from "./filters.selector";
 
 
 export const getProduct = createSelector(
@@ -21,7 +21,7 @@ const catalogErrorSelector = (state: RootState) => state.products.error;
 
 const catalogItemsFilterBy = createSelector(
   catalogItemsSelector,
-  catalogFilterByBrandSelector,
+  catalogFilterByCategorySelector,
   catalogFilterByPriceSelector,
   (items: Product[], filterByBrand: string[], filterByPrice: { min: number, max: number}) => {
       if (!items || items.length === 0) return [];

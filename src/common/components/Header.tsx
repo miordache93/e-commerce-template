@@ -53,13 +53,12 @@ export const Header = (props: Props) => {
     <div>
       <Box sx={{ display: 'flex' }}>
         <AppBar component="nav">
-          <Toolbar>
+          <Toolbar  sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
             <Link to="/" >
               <Typography
                 variant="h6"
-                component="div"
-                sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
-              >           {t('TITLE')}
+                component="div"> 
+              {t('TITLE')}
               </Typography>
             </Link>
             <Box sx={{ display: { xs: 'none', sm: 'block' } }}>

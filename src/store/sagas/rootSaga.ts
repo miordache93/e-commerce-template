@@ -1,10 +1,14 @@
 import { all, fork } from 'redux-saga/effects';
+import { categoriesWatcherSaga } from './watchers/categories';
 import { productWatcherSaga } from './watchers/product';
 import { productsWatcherSaga } from './watchers/products';
 
 function* rootSaga() {
-  // TODO: add more sagas
-  yield all([fork(productsWatcherSaga), fork(productWatcherSaga)]);
+  yield all([
+    fork(productsWatcherSaga),
+    fork(productWatcherSaga),
+    fork(categoriesWatcherSaga)
+  ]);
 }
 
 export default rootSaga;

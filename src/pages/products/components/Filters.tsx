@@ -1,9 +1,9 @@
 import { FormControl, InputLabel, MenuItem, OutlinedInput, Select } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { setBrandFilter } from '../../../store/ducks/filtersSlice';
+import { setCategoryFilter } from '../../../store/ducks/filtersSlice';
 import { useAppDispatch } from '../../../store/hooks';
-import { catalogFilterByBrandSelector } from '../../../store/selectors/filters.selector';
+import { catalogFilterByCategorySelector } from '../../../store/selectors/filters.selector';
 
 const brands = [
   'Brand 1',
@@ -12,7 +12,7 @@ const brands = [
 ];
 
 const Filters = () => {
-  const selectedBrands = useSelector(catalogFilterByBrandSelector);
+  const selectedCategory = useSelector(catalogFilterByCategorySelector);
   const dispatch = useAppDispatch();
 
 
@@ -20,7 +20,7 @@ const Filters = () => {
     const {
       target: { value },
     } = event;
-    dispatch(setBrandFilter(value));
+    dispatch(setCategoryFilter(value));
   };
 
   return (
@@ -33,7 +33,7 @@ const Filters = () => {
           labelId="brand-filter-label"
           id="brand-filter-name"
           multiple
-          value={selectedBrands}
+          value={selectedCategory}
           onChange={handleBrandChange}
           input={<OutlinedInput label="Name" />}
         >
