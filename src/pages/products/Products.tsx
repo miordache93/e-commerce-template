@@ -9,7 +9,6 @@ import ProductsList from './components/ProductsList';
 
 export const Products = () => {
   const dispatch = useAppDispatch();
-  // const selectedProduct = useAppSelector((state: any) => state.product.product);
   const productsLength = useSelector(getProductsLength);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export const Products = () => {
     return () => {
       dispatch(clearProducts());
     }
-  }, [dispatch, productsLength]);
+  }, [dispatch]);
 
   return (
     <>

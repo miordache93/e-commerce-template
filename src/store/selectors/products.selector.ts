@@ -61,8 +61,8 @@ export const getCatalog = createSelector(
           !loading && !products.length && !error
               ? {
                     ...error,
-                    name: 'Фильтр',
-                    message: 'Упс! У нас нет таких товаров, попробуйте изменить условия поиска.',
+                    name: 'Server error!',
+                    message: 'Unable to load products',
                 }
               : error;
 

@@ -1,15 +1,18 @@
 import axios from "axios";
 
-export function fetchProductsApi(): Promise<any[]> {
+const baseUrl = 'https://fakestoreapi.com';
+
+export function fetchAllProducts(): Promise<any[]> {
   return axios.request({
     method: 'get',
-    url: 'http://localhost:8080/catalog'
+    url: `${baseUrl}/products`
   })
 };
 
-export function fetchProductApi(productId: number): Promise<any[]> {
+export function fetchProductById(productId: number): Promise<any[]> {
   return axios.request({
     method: 'get',
-    url: `http://localhost:8080/catalog/${productId}`
+    url: `${baseUrl}products/products/${productId}`
   })
 };
+

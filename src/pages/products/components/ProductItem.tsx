@@ -10,10 +10,11 @@ interface IProps {
   product: Product;
 }
 
-function ProductItem({handleClick, product}: IProps) {
+function ProductItem({ handleClick, product }: IProps) {
+
   return (
-    <div onClick={() => handleClick(product.id)}>
-      { product.name && <Card sx={{ maxWidth: 345 }}>
+    <div className="ProductItem" onClick={() => handleClick(product.id)}>
+      {product.title && <Card sx={{ maxWidth: 345 }}>
         <CardHeader
           avatar={
             <Avatar aria-label="recipe">
@@ -25,13 +26,13 @@ function ProductItem({handleClick, product}: IProps) {
               <MoreVertIcon />
             </IconButton>
           }
-          title="Shrimp and Chorizo Paella"
+          title={product.title}
           subheader="September 14, 2016"
         />
         <CardMedia
           component="img"
           height="194"
-          image={require('./../../../static/images/products/cp.png')} //product.imageUrl
+          image={product.image}
           alt="Paella dish"
         />
         <CardContent>
@@ -50,7 +51,7 @@ function ProductItem({handleClick, product}: IProps) {
           </IconButton>
         </CardActions>
       </Card>
-}
+      }
     </div>
   )
 }

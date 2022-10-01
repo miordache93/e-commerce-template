@@ -11,7 +11,6 @@ const ProductsList = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-
   const handleProductClick = (id: number): void => {
     dispatch(
       getProduct(id)

@@ -43,7 +43,7 @@ export const productsSlice = createSlice({
     clearProducts: (state) => {
       return {
         ...state,
-        items: [],
+        items: []
       }
     }
   },
