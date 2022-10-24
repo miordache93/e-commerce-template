@@ -25,7 +25,32 @@ const palletes: { [key: string]: IPalette } = {
 };
 
 export const gambitsTheme = (mode: PaletteMode): ThemeOptions => ({
-  ...palletes[mode],
-  components: {}
+  palette: {
+    ...palletes[mode].palette,
+    mode
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        sx: {
+          margin: 1
+        }
+      },
+      variants: [
+        {
+          props: { variant: 'rounded' },
+          style: {
+            textTransform: 'none',
+            textAlign: 'center',
+            width: '100%',
+            borderRadius: '15px',
+            '&:hover': {
+              border: '1px solid black'
+            }
+          },
+        },
+      ]
+    },
+  },
 });
 

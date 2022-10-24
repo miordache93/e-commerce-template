@@ -1,10 +1,11 @@
-import { ThemeOptions } from "@mui/material";
+import { PaletteMode, ThemeOptions } from "@mui/material";
 import { IPalette } from "../../interfaces/palette.interface";
 
-export const CustomTheme = (mode: string, palette: any): ThemeOptions => {
+export const CustomTheme = (mode: PaletteMode, palette: any): ThemeOptions => {
     const palletes: { [key: string]: IPalette } = {
         light: {
             palette: {
+                mode: mode,
                 primary: {
                     main: palette.primary,
                 },
@@ -15,6 +16,7 @@ export const CustomTheme = (mode: string, palette: any): ThemeOptions => {
         },
         dark: {
             palette: {
+                mode: mode,
                 primary: {
                     main: palette.primary,
                 },

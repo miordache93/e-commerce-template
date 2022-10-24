@@ -1,3 +1,4 @@
+import { PaletteMode } from "@mui/material";
 import { baseTheme, gambitsTheme, wildTheme, CustomTheme } from "../settings/themes";
 
 export const THEME_TYPES = {
@@ -7,7 +8,7 @@ export const THEME_TYPES = {
   CUSTOM: 'CUSTOM',
 };
 
-export const THEME_MODES = {
+export const THEME_MODES: { [key: string]: PaletteMode} = {
   DARK: 'dark',
   LIGHT: 'light',
 }

@@ -2,5 +2,9 @@
   "TITLE": "E-Commerce",
   "HEADER_NAVITEMS_HOME": "HOME",
   "HEADER_NAVITEMS_CATALOG": "CATALOG",
-  "HEADER_NAVITEMS_CONTACT": "CONTACT"
+  "HEADER_NAVITEMS_CONTACT": "CONTACT",
+  "SIGN_BUTTON_FACEBOOK": "Continue with Facebook",
+  "SIGN_BUTTON_GOOGLE": "Continue with Google",
+  "FORGOT_YOUR_PASSWORD": "Forgot your password?",
+  "LOGIN_BUTTON": "LOG IN"
 }
