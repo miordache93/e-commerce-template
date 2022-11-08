@@ -1,19 +1,17 @@
 import axios from "axios";
 
-const baseUrl = 'http://localhost:8080';
-
 // PRODUCTS
 export function fetchAllProducts(): Promise<any[]> {
   return axios.request({
     method: 'get',
-    url: `backend/catalog`
+    url: `api/catalog`
   })
 };
 
 export function fetchProductById(productId: number): Promise<any[]> {
   return axios.request({
     method: 'get',
-    url: `${baseUrl}products/products/${productId}`
+    url: `api/products/products/${productId}`
   })
 };
 
@@ -22,7 +20,7 @@ export function fetchProductById(productId: number): Promise<any[]> {
 export function fetchAllCategories(): Promise<any[]> {
   return axios.request({
     method: 'get',
-    url: `backend/categories`
+    url: `api/category`
   })
 };
 
@@ -31,6 +29,6 @@ export function fetchAllCategories(): Promise<any[]> {
 export function googleSignIn(): Promise<any> {
   return axios.request({
     method: 'get',
-    url: `${baseUrl}/auth/google`
+    url: `api/auth/google`
   });
 }
